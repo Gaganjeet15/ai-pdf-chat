@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { BotIcon, MoonIcon, SunIcon } from "./Icons";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+  const isHome = location.pathname.endsWith("/");
 
   return (
     <nav className="h-16 border-b border-gray-200 dark:border-white/5 bg-white/80 dark:bg-[#0f1117]/80 backdrop-blur-md sticky top-0 z-50 px-6 sm:px-12 flex items-center justify-between transition-colors duration-300">
@@ -17,12 +19,21 @@ const Navbar = () => {
       </Link>
 
       <div className="flex items-center gap-6">
-        <a
-          href="/#features"
-          className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium hidden sm:block"
-        >
-          Features
-        </a>
+        {isHome ? (
+          <a
+            href="#features"
+            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium hidden sm:block"
+          >
+            Features
+          </a>
+        ) : (
+          <Link
+            to="#features"
+            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium hidden sm:block"
+          >
+            Features
+          </Link>
+        )}
 
         <button
           onClick={toggleTheme}
@@ -32,7 +43,7 @@ const Navbar = () => {
           {theme === "dark" ? <SunIcon size={20} /> : <MoonIcon size={20} />}
         </button>
 
-        <Link to="/app">
+        <Link to="app">
           <button className="px-5 py-2 bg-black dark:bg-white text-white dark:text-black rounded-full text-sm font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors">
             Launch App
           </button>
