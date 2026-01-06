@@ -116,7 +116,7 @@ const slides = [
     id: 1,
     title: "DocuBrain",
     subtitle: "Advanced AI-Powered Document Assistant",
-    content: "Final Year Project Presentation",
+    content: "Minor Project Presentation by Gaganjeet Singh",
     type: "title",
   },
   {
