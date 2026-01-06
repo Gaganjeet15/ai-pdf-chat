@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import { ThemeProvider } from "./context/ThemeContext";
 import ChatApp from "./pages/ChatApp";
 import LandingPage from "./pages/LandingPage";
+import Presentation from "./pages/Presentation";
 
 function AppLayout() {
   // Show Navbar on all pages for now, or maybe simplified on the chat app?
@@ -14,6 +15,7 @@ function AppLayout() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="app" element={<ChatApp />} />
+        <Route path="presentation" element={<Presentation />} />
       </Routes>
     </>
   );
